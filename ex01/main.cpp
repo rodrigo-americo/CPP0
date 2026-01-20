@@ -1,17 +1,16 @@
 #include "Contact.hpp"
 #include "PhoneBook.hpp"
+#include <cstdlib>
 #include <iostream>
 #include <string>
 
-
-// Função para ler um campo obrigatório
 std::string readField(const std::string &prompt) {
   std::string input;
   while (true) {
     std::cout << prompt;
     if (!std::getline(std::cin, input)) {
       std::cout << "\nEncerrando programa.\n";
-      exit(0); // trata EOF
+      exit(0);
     }
     if (!input.empty())
       return input;
@@ -54,8 +53,6 @@ int main() {
         std::cout << "\nEncerrando programa.\n";
         break;
       }
-
-      // verificar se é número
       bool isNum = true;
       for (size_t i = 0; i < indexStr.size(); i++) {
         if (!std::isdigit(indexStr[i])) {
@@ -69,7 +66,7 @@ int main() {
         continue;
       }
 
-      int index = std::atoi(indexStr.c_str());
+      int index = atoi(indexStr.c_str());
       phonebook.displayContact(index);
 
     } else if (command == "EXIT") {
